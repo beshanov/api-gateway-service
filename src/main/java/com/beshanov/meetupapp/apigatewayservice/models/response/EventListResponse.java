@@ -4,10 +4,10 @@ import com.beshanov.meetupapp.apigatewayservice.models.mock.EventMock;
 
 import java.util.List;
 
-public class ListEventsResponse {
+public class EventListResponse {
     private List<EventMock> events;
 
-    public ListEventsResponse() {
+    public EventListResponse() {
     }
 
     public List<EventMock> getEvents() {
