@@ -1,6 +1,6 @@
 package com.beshanov.meetupapp.apigatewayservice.controllers;
 
-import com.beshanov.meetupapp.apigatewayservice.models.mock.EventMock;
+import com.beshanov.meetupapp.apigatewayservice.models.Event;
 import com.beshanov.meetupapp.apigatewayservice.models.request.CreateEventRequest;
 import com.beshanov.meetupapp.apigatewayservice.services.EventsRestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class EventsController {
     EventsRestService eventsRestService;
 
     @PostMapping(value = "/events", consumes = "application/json")
-    public EventMock createEvent(@RequestBody CreateEventRequest createRequest) {
+    public Event createEvent(@RequestBody CreateEventRequest createRequest) {
         //ессли я попал сюда, значит есть сессия
         // -> значит есть userId
         Long userId = 1L; // получить реальный id с помощью сессии или из login-service
@@ -27,7 +27,7 @@ public class EventsController {
     }
 
     @GetMapping("/events")
-    public List<EventMock> getMyEvents() {
+    public List<Event> getMyEvents() {
         //ессли я попал сюда, значит есть сессия
         // -> значит есть userId
         Long userId = 1L; // получить реальный id с помощью сессии или из login-service

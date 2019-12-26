@@ -1,10 +1,10 @@
-package com.beshanov.meetupapp.apigatewayservice.models.mock;
+package com.beshanov.meetupapp.apigatewayservice.models;
 
 import java.util.Calendar;
 
-public class EventMock {
+public class Event {
 
-    private Long id;
+    private String id;
     private String title;
     private Long authorId;
     private Calendar date;
@@ -19,14 +19,14 @@ public class EventMock {
     private Integer participantsAgeTo;
     private String privacyCategory;
 
-    public EventMock() {
+    public Event() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -135,3 +135,4 @@ public class EventMock {
         this.place = place;
     }
 }
+

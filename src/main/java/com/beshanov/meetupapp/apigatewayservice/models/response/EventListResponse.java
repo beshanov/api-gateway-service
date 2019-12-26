@@ -1,20 +1,20 @@
 package com.beshanov.meetupapp.apigatewayservice.models.response;
 
-import com.beshanov.meetupapp.apigatewayservice.models.mock.EventMock;
+import com.beshanov.meetupapp.apigatewayservice.models.Event;
 
 import java.util.List;
 
 public class EventListResponse {
-    private List<EventMock> events;
+    private List<Event> events;
 
     public EventListResponse() {
     }
 
-    public List<EventMock> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<EventMock> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 }

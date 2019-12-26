@@ -4,13 +4,13 @@ import java.util.List;
 
 public class GetMyEventsIdsResponse {
 
-    private List<Long> eventsIds;
+    private List<String> eventsIds;
 
-    public List<Long> getEventsIds() {
+    public List<String> getEventsIds() {
         return eventsIds;
     }
 
-    public void setEventsIds(List<Long> eventsIds) {
+    public void setEventsIds(List<String> eventsIds) {
         this.eventsIds = eventsIds;
     }
 
