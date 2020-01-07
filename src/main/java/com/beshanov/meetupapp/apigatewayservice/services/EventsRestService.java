@@ -18,9 +18,7 @@ public class EventsRestService {
     RestTemplate restTemplate;
 
     public List<Event> getEventsByUserId(Long userId) {
-        // вызываем profile-service по userId и просим вернуть все соответствующие ему события (ids)(на которые подписан, и которые создал)
-        GetMyEventsIdsResponse eventsIdsResponse = restTemplate.getForObject("http://profile-service/events/?userId=" + userId, GetMyEventsIdsResponse.class);
-        List<String> eventsIds = eventsIdsResponse.getEventsIds();
+        List<String> eventsIds = getEventIdsByUserId(userId);
         List<Event> events = new ArrayList<>();
         for (String eventId : eventsIds) {
             Event event = restTemplate.getForObject("http://event-service/events/" + eventId, Event.class);
@@ -30,10 +28,14 @@ public class EventsRestService {
     }
 
     public Event createEvent(CreateEventRequest createRequest) {
-        //передать полFученный объект запроса в event-service
         createRequest.setCreationDate(Calendar.getInstance());
         Event createdEvent = restTemplate.postForObject("http://event-service/events/", createRequest, Event.class);
-        //получить от него только что созданное событие и вернуть его на
         return createdEvent;
+    }
+
+    private List<String> getEventIdsByUserId(Long userId) {
+        GetMyEventsIdsResponse eventsIdsResponse =
+                restTemplate.getForObject("http://profile-service/events/?userId=" + userId, GetMyEventsIdsResponse.class);
+        return eventsIdsResponse.getEventsIds();
     }
 }
